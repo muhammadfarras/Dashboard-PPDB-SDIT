@@ -61,7 +61,7 @@
 <body>
   <!-- <div style="padding: 20px;" id="chart_div"></div> -->
 
-<h1>Its show</h1>
+<h1>Shows 2</h1>
 
 
 
@@ -164,16 +164,16 @@
        */
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-          range: 'Class Data!A2:E',
+          spreadsheetId: '1SXxmoR4J19Mbf4u8ZG881h2S_sD7jAIA3XzNJpN6A4o',
+          range: 'Class Data!A2:F',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
-            appendPre('Name, Major:');
+            appendPre('Tugas Id, Nama Tugas, Sumber, Tanggal Awal, Tanggal Akhir, Prosentase:');
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[4]);
+              appendPre(row[0] + ', ' + row[1]+ ', ' + row[2]+ ', ' + row[3]+ ', ' + row[4]+ ', ' + row[5]);
             }
           } else {
             appendPre('No data found.');
