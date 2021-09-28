@@ -112,7 +112,7 @@
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1SXxmoR4J19Mbf4u8ZG881h2S_sD7jAIA3XzNJpN6A4o',
-          range: 'Progres!A2:F',
+          range: 'Progres!A2:H',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -122,6 +122,8 @@
               // Print columns A and E, which correspond to indices 0 and 4.
 
               dataArray.push([row[0],row[1],row[2],new Date (row[3]),new Date(row[4]),null,parseInt(row[5],10),null]);
+
+
               appendPre(row[0] + ', ' + row[1]+ ', ' + row[2]+ ', ' + row[3]+ ', ' + row[4]+ ', ' + row[5]);
             }
 
