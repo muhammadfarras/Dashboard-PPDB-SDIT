@@ -33,7 +33,7 @@
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
 
-      var dataArray = [];
+      
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -115,6 +115,9 @@
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
       function listMajors() {
+
+        var dataArray = [];
+
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1SXxmoR4J19Mbf4u8ZG881h2S_sD7jAIA3XzNJpN6A4o',
           range: 'Progres!A2:H',
@@ -136,7 +139,7 @@
               var percentComplete = row[6] != "" ? row[6] : null;
               var dependencies = row[7] != "" ? row[7] : null;
 
-              dataArray.push(taskId,taskName,resource,new Date (startDate),new Date(endDate),daysToMilliseconds(parseInt(duration,100)),parseInt(percentComplete,10),dependencies);
+              dataArray.push([taskId,taskName,resource,new Date (startDate),new Date(endDate),daysToMilliseconds(parseInt(duration,100)),parseInt(percentComplete,10),dependencies]);
 
 
               appendPre(row[0] + ', ' + row[1]+ ', ' + row[2]+ ', ' + row[3]+ ', ' + row[4]+ ', ' + row[5]);
