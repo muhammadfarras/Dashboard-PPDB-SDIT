@@ -10,13 +10,32 @@
 </head>
 <body>
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <button id="authorize_button" style="display: none;">Authorize</button>
+          </li>
+          <li class="nav-item">
+            <button id="signout_button" style="display: none;">Sign Out</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 
   <div class="container mt-5 p-3 bg-body rounded shadow-sm">
 
     <p class="lead">
       Project Manager PPDB SDIT Anak Shalih Bogor TP 2022/2023
     </p>
-    <div class="m-3" id="chart_div"></div>
+    <div class="ml-3 mr-3 mt-3" id="chart_div"></div>
 
     <div class="alert alert-info" role="alert">
       Gannt Chart diatas bersumber dari <a target="_blank" href="https://docs.google.com/spreadsheets/d/1SXxmoR4J19Mbf4u8ZG881h2S_sD7jAIA3XzNJpN6A4o/">Google Sheets</a>. Gunakan akun <b>anakshalih.sch.id</b> untuk mengaksesnya.
@@ -61,8 +80,7 @@
   
 
 <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
+    
 
     <pre id="content" style="white-space: pre-wrap;">123123</pre>
 
