@@ -133,13 +133,13 @@
               var taskId = row[0] != "" ? row[0] : null;
               var taskName = row[1] != "" ? row[1] : null;
               var resource = row[2] != "" ? row[2] : null;
-              var startDate = row[3] != "" ? row[3] : null;
-              var endDate = row[4] != "" ? row[4] : null;
+              var startDate = row[3] != "" ? new Date (row[3]) : null;
+              var endDate = row[4] != "" ? new Date (row[4]) : null;
               var duration = row[5] != "" ? row[5] : null;
               var percentComplete = row[6] != "" ? row[6] : null;
               var dependencies = row[7] != "" ? row[7] : null;
 
-              dataArray.push([taskId,taskName,resource,new Date (startDate),new Date(endDate),daysToMilliseconds(parseInt(duration,100)),parseInt(percentComplete,10),dependencies]);
+              dataArray.push([taskId,taskName,resource,startDate,endDate,daysToMilliseconds(parseInt(duration,100)),parseInt(percentComplete,10),dependencies]);
 
 
               appendPre(row[0] + ', ' + row[1]+ ', ' + row[2]+ ', ' + row[3]+ ', ' + row[4]+ ', ' + row[5]);
