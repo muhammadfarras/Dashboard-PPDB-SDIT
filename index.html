@@ -116,16 +116,6 @@
               </tr>
             </thead>
             <tbody id="tbody-notif">
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -367,6 +357,7 @@
         var dataArrayNotif = [];
         var dataArrayAkumulasi = [];
         var countAkumulasi = 0;
+        var number = 1;
 
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1EZcyVxIaokGPFjhbrDfYUk-GopUWNdqSxmyDIagbrSg',
@@ -391,8 +382,7 @@
 
               dataArrayAkumulasi.push(dateWithoutTime(entryDate));
 
-
-              nodeTBodyNotif.innerHTML += "<tr><th scope='row'>"+i+"</th><td>"+nama+"</td><td>"+notifSiswaBaru+"</td></tr>";
+              nodeTBodyNotif.innerHTML += "<tr><th scope='row'>"+(i+1)+"</th><td>"+nama+"</td><td>"+notifSiswaBaru+"</td></tr>";
 
               dataArrayNotif.push([nama,email,noWa,notifSiswaBaru,notifSiswaPindahan,userId,entryId,entryDate]);
             }
