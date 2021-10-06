@@ -433,18 +433,20 @@
 
             var resultCountDate = [];
 
-            for (var i = 0 ; i <= noDuplicate.length; i++){
+            for (var i = 0 ; i <= noDuplicate.length - 1; i++){
 
               // masukan array nya
               resultCountDate.push([noDuplicate[i],0]);
 
-              for (var z = 0 ; z <= dataArrayAkumulasi.length ; z++){
+              for (var z = 0 ; z <= dataArrayAkumulasi.length - 1 ; z++){
 
                 if (dataArrayAkumulasi[z] == noDuplicate[i]){
                   resultCountDate[i][1] += 1;
                 }
 
               }
+              // ganti format data tipenya ke date lagi
+              resultCountDate[i][0] = new Date (resultCountDate[i][0]);
             }
             console.log (resultCountDate);
 
