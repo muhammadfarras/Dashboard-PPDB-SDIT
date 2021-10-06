@@ -388,10 +388,12 @@
       function listNotifPPDB (){
 
         var dataArrayNotif = [];
+        var dataArrayAkumulasi [];
+        var countAkumulasi = 0;
 
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1EZcyVxIaokGPFjhbrDfYUk-GopUWNdqSxmyDIagbrSg',
-          range: 'Sheet1!A1:H',
+          range: 'Sheet1!A2:H',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -410,9 +412,16 @@
               var entryId = row[6] != "" ?  row[6] : null;
               var entryDate = row[7] != "" ? new Date (row[7]) : null;
 
+
+              countAkumulasi++;
+              dataArrayAkumulasi.push([entryDate,countAkumulasi]);
+
+
+
               dataArrayNotif.push([nama,email,noWa,notifSiswaBaru,notifSiswaPindahan,userId,entryId,entryDate]);
             }
             console.log (dataArrayNotif);
+            console.log (dataArrayAkumulasi);
           } else {
             appendPre('No data found.');
           }
