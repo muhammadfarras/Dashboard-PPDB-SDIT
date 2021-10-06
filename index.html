@@ -13,28 +13,12 @@
 <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
-      google.charts.setOnLoadCallback(drawChartPindahan);
+      // google.charts.setOnLoadCallback(drawChartPindahan);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Jenis Kelamin', 'Pendaftar'],
-          ['Ikhwan',     78],
-          ['AKhwat',      48]
-        ]);
-
-        var options = {
-          title: 'Pendaftar berdasarkan jenis Kelamin',
-          is3D: true,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_jk'));
-        chart.draw(data, options);
-      }
-
-      function drawChartPindahan() {
-        var data = google.visualization.arrayToDataTable([
           ['Tipe Pendaftar', 'Pendaftar'],
-          ['Siswa Baru',     118],
-          ['Siswa Pindahan',      38]
+          ['Siswa Baru',     78],
+          ['Siswa Pindahan',      48]
         ]);
 
         var options = {
@@ -42,9 +26,25 @@
           is3D: true,
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_pindahan'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_jk'));
         chart.draw(data, options);
       }
+
+      // function drawChartPindahan() {
+      //   var data = google.visualization.arrayToDataTable([
+      //     ['Tipe Pendaftar', 'Pendaftar'],
+      //     ['Siswa Baru',     118],
+      //     ['Siswa Pindahan',      38]
+      //   ]);
+
+      //   var options = {
+      //     title: 'Pendaftar berdasarkan tipe pendaftar',
+      //     is3D: true,
+      //   };
+
+      //   var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_pindahan'));
+      //   chart.draw(data, options);
+      // }
 
 
       google.charts.load('current', {packages: ['corechart', 'line']});
@@ -52,38 +52,42 @@
 
       function drawBackgroundColor() {
             var data = new google.visualization.DataTable();
-            data.addColumn('number', 'X');
+            data.addColumn('date', 'Tanggal Daftar');
             data.addColumn('number', 'Pendaftar');
 
             data.addRows([
-              [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-              [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-              [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-              [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-              [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-              [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
-              [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
-              [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
-              [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
-              [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
-              [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
-              [66, 70], [67, 72], [68, 75], [69, 80]
+              [new Date (2021,10,1),0],
+              [new Date (2021,10,2),4],
+              [new Date (2021,10,6),16],
+              [new Date (2021,10,7),21],
+              [new Date (2021,10,12),24],
+              [new Date (2021,10,24),24],
             ]);
 
             var options = {
-              title: 'Grafik kenaikan pendaftar PPDB SDIT Anak Shalih Bogor',
+              title: 'Kenaikan pendaftaran notifikasi PPDB SDIT Anak Shalih TP 2022 - 2023',
               hAxis: {
-                title: 'Time'
+                format : "dd MMMM YYYY"
               },
               vAxis: {
                 title: 'Jumlah Pendaftar'
-              }
+              },
+              pointSize: 7,
+              dataOpacity: 0.3,
+              legend: 'none'
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('chart_div_line'));
             chart.draw(data, options);
           }
     </script>
+
+    <style type="text/css">
+      .addScroll {
+        overflow-y: auto;
+        height: 200px;
+      }
+    </style>
 </head>
 <body>
 
@@ -122,41 +126,65 @@
 
 
   <div class="container mt-5 p-3 bg-body rounded shadow-sm">
-<span class="badge rounded-pill bg-warning text-dark">Dalam Pengembangan (Data Dummy)</span>
-    <p class="lead">
-      Informasi Umum Pendaftar PPDB
-    </p>
+  <!-- <span class="badge rounded-pill bg-warning text-dark">Dalam Pengembangan (Data Dummy)</span> -->
+      <p class="lead">
+        Informasi Notifikasi PPDB
+      </p>
 
+      <div class="row">
+      <div class="col">
+        <div id="piechart_3d_jk" style="width: 400px; height: 300px;"></div>
+      </div>
+      <!-- Isi dari notifikasi -->
+      <div class="col">
+
+        <div class="addScroll mb-4">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Tipe Pendaftaran</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+      Data diatas bersumber dari <a target="_blank" href="https://docs.google.com/spreadsheets/d/1EZcyVxIaokGPFjhbrDfYUk-GopUWNdqSxmyDIagbrSg/">Google Sheets</a>. Gunakan akun <b>anakshalih.sch.id</b> untuk mengaksesnya.
+    </div>
+      </div>
+    </div>
     <div class="row">
-    <div class="col">
-      <div id="piechart_3d_jk" style="width: 400px; height: 300px;"></div>
+      <div class="col">
+        <div id="chart_div_line" style="height: 300px;"></div>
+      </div>
     </div>
-    <div class="col">
-      <div id="piechart_3d_pindahan" style="width: 400px; height: 300px;"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div id="chart_div_line" style="height: 300px;"></div>
+
+
+    <div class="container">
+        
     </div>
   </div>
-
-
-  <div class="container">
-      
-  </div>
-
-
-    
-  </div>
-
 
 
   <div class="container mt-5 p-3 bg-body rounded shadow-sm">
 
     <span class="badge rounded-pill bg-warning text-dark">Dalam Pengembangan</span>
     <p class="lead">
-      Project Manager PPDB SDIT Anak Shalih Bogor TP 2022/2023
+      Data PPDB SDIT Anak Shalih Bogor TP 2022/2023 (Tabel)
 
     </p>
 
