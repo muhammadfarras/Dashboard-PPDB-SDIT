@@ -426,7 +426,10 @@
               dataArrayNotif.push([nama,email,noWa,notifSiswaBaru,notifSiswaPindahan,userId,entryId,entryDate]);
             }
             console.log (dataArrayNotif);
-            console.log (dataArrayAkumulasi);
+
+            // Sortir dan rubah ke set agar menghapus duplikat
+
+            console.log ([...new Set(dataArrayAkumulasi.sort())]);
 
 
           } else {
