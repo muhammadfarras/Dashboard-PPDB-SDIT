@@ -429,7 +429,24 @@
 
             // Sortir dan rubah ke set agar menghapus duplikat
 
-            console.log ([...new Set(dataArrayAkumulasi.sort())]);
+            var noDuplicate = [...new Set(dataArrayAkumulasi.sort())];
+
+            var resultCountDate = [];
+
+            for (var i = 0 ; i <= count(noDuplicate), i++){
+
+              // masukan array nya
+              resultCountDate.push([noDuplicate[i],0]);
+
+              for (var z = 0 ; z <= count(dataArrayAkumulasi) , z++){
+
+                if (dataArrayAkumulasi[z] == noDuplicate[i]){
+                  resultCountDate[i][1] += 1;
+                }
+
+              }
+            }
+            console.log (resultCountDate);
 
 
           } else {
