@@ -310,7 +310,7 @@
       function dateWithoutTime (dateTime){
 
         var onlyDate = new Date (dateTime);
-        return new Date (onlyDate.setHours(0,0,0,0));
+        return onlyDate.setHours(0,0,0,0);
       }
 
 
@@ -425,11 +425,10 @@
 
               dataArrayNotif.push([nama,email,noWa,notifSiswaBaru,notifSiswaPindahan,userId,entryId,entryDate]);
             }
-
-            //  for lagi untuk menghitung jumlah pendaftar
-
             console.log (dataArrayNotif);
             console.log (dataArrayAkumulasi);
+
+
           } else {
             appendPre('No data found.');
           }
