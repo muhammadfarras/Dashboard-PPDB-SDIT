@@ -47,39 +47,7 @@
       // }
 
 
-      google.charts.load('current', {packages: ['corechart', 'line']});
-      google.charts.setOnLoadCallback(drawBackgroundColor);
-
-      function drawBackgroundColor() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('date', 'Tanggal Daftar');
-            data.addColumn('number', 'Pendaftar');
-
-            data.addRows([
-              [new Date (2021,10,1),0],
-              [new Date (2021,10,2),4],
-              [new Date (2021,10,6),16],
-              [new Date (2021,10,7),21],
-              [new Date (2021,10,12),24],
-              [new Date (2021,10,24),24],
-            ]);
-
-            var options = {
-              title: 'Kenaikan pendaftaran notifikasi PPDB SDIT Anak Shalih TP 2022 - 2023',
-              hAxis: {
-                format : "dd MMMM YYYY"
-              },
-              vAxis: {
-                title: 'Jumlah Pendaftar'
-              },
-              pointSize: 7,
-              dataOpacity: 0.3,
-              legend: 'none'
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div_line'));
-            chart.draw(data, options);
-          }
+      
     </script>
 
     <style type="text/css">
@@ -451,13 +419,42 @@
             console.log (resultCountDate);
 
 
-          } else {
-            appendPre('No data found.');
-          }
-        }, function(response) {
-          appendPre('Error: ' + response.result.error.message);
-        });
-      }
+            google.charts.load('current', {packages: ['corechart', 'line']});
+            google.charts.setOnLoadCallback(drawBackgroundColor);
+
+            function drawBackgroundColor() {
+                  var data = new google.visualization.DataTable();
+                  data.addColumn('date', 'Tanggal Daftar');
+                  data.addColumn('number', 'Pendaftar');
+
+                  data.addRows(resultCountDate);
+
+                  var options = {
+                    title: 'Kenaikan pendaftaran notifikasi PPDB SDIT Anak Shalih TP 2022 - 2023',
+                    hAxis: {
+                      format : "dd MMMM YYYY"
+                    },
+                    vAxis: {
+                      title: 'Jumlah Pendaftar'
+                    },
+                    pointSize: 7,
+                    dataOpacity: 0.3,
+                    legend: 'none'
+                  };
+
+                  var chart = new google.visualization.LineChart(document.getElementById('chart_div_line'));
+                  chart.draw(data, options);
+                }
+
+
+
+                } else {
+                  appendPre('No data found.');
+                }
+              }, function(response) {
+                appendPre('Error: ' + response.result.error.message);
+              });
+            }
 
     </script>
 
