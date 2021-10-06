@@ -115,7 +115,7 @@
                 <th scope="col">Tipe Pendaftaran</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody-notif">
               <tr>
                 <th scope="row">1</th>
                 <td>Mark</td>
@@ -200,6 +200,8 @@
 
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
+
+      var nodeTBodyNotif = document.getElementById('tbody-notif');
 
       
       /**
@@ -390,7 +392,8 @@
               dataArrayAkumulasi.push(dateWithoutTime(entryDate));
 
 
-
+              nodeTBodyNotif.innerHTML += "<tr><th scope='row'>".i."</th><td>".nama."</td><td>".notifSiswaBaru."</td></tr>";
+              
               dataArrayNotif.push([nama,email,noWa,notifSiswaBaru,notifSiswaPindahan,userId,entryId,entryDate]);
             }
             console.log (dataArrayNotif);
@@ -416,7 +419,6 @@
               // ganti format data tipenya ke date lagi
               resultCountDate[i][0] = new Date (resultCountDate[i][0]);
             }
-            console.log (resultCountDate);
 
 
             google.charts.load('current', {packages: ['corechart', 'line']});
