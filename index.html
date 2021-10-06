@@ -420,7 +420,15 @@
 
               dataArrayNotif.push([nama,email,noWa,notifSiswaBaru,notifSiswaPindahan,userId,entryId,entryDate]);
             }
+
+            //  for lagi untuk menghitung jumlah pendaftar
+
             console.log (dataArrayNotif);
+
+            // Sortir
+            dataArrayAkumulasi.sort (function(a,b){
+              return a[0] - b[0];
+            });
             console.log (dataArrayAkumulasi);
           } else {
             appendPre('No data found.');
