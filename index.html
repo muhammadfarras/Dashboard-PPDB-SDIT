@@ -245,6 +245,7 @@
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           listMajors();
+          listNotifPPDB();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -347,6 +348,43 @@
 		      chart.draw(data, options);
 		    }
             console.log (dataArray);
+          } else {
+            appendPre('No data found.');
+          }
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+      }
+
+      // Data notif PPDB
+      function listNotifPPDB (){
+
+        var dataArrayNotif = [];
+
+        gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1EZcyVxIaokGPFjhbrDfYUk-GopUWNdqSxmyDIagbrSg',
+          range: 'Sheet1!A1:H',
+        }).then(function(response) {
+          var range = response.result;
+          if (range.values.length > 0) {
+            // appendPre('Tugas Id, Nama Tugas, Sumber, Tanggal Awal, Tanggal Akhir, Prosentase:');
+            for (i = 0; i < range.values.length; i++) {
+              var row = range.values[i];
+
+
+              //
+              var nama = row[0] != "" ? row[0] : null;
+              var email = row[1] != "" ? row[1] : null;
+              var noWa = row[2] != "" ? row[2] : null;
+              var notifSiswaBaru = row[3] != "" ? row[3] : null;
+              var notifSiswaPindahan = row[4] != "" ? row[4] : null;
+              var userId = row[5] != "" ?  row[5] : null;
+              var entryId = row[6] != "" ?  row[6] : null;
+              var entryDate = row[7] != "" ? new Date (row[7]) : null;
+
+              dataArrayNotif.push([nama,email,noWa,notifSiswaBaru,notifSiswaPindahan,userId,entryId,entryDate]);
+            }
+            console.log (dataArrayNotif);
           } else {
             appendPre('No data found.');
           }
