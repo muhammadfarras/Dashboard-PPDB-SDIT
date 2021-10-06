@@ -1,0 +1,10 @@
+<script type="text/javascript">
+	
+
+	function dateWithoutTime (dateTime){
+		return new Date (dateTime.setHours(0,0,0,0));
+	}
+	var arrDate = [[dateWithoutTime (new Date ("2021-10-05 17:06:03"))],[dateWithoutTime (new Date ("2021-10-05 15:21:28"))],[dateWithoutTime (new Date ("2021-10-04 08:36:29"))],[dateWithoutTime (new Date ("2021-10-03 06:22:22"))],[dateWithoutTime (new Date ("2021-10-02 17:27:57"))],[dateWithoutTime (new Date ("2021-10-02 17:31:10"))]];
+
+	console.log (arrDate);
+</script>

@@ -306,6 +306,13 @@
         pre.appendChild(textContent);
       }
 
+      // mengkonversi date with time menjadi withouttime
+      function dateWithoutTime (dateTime){
+
+        var onlyDate = new Date (dateTime);
+        return new Date (onlyDate.setHours(0,0,0,0));
+      }
+
 
       function daysToMilliseconds(days) {
         return days * 24 * 60 * 60 * 1000;
@@ -412,9 +419,7 @@
               var entryId = row[6] != "" ?  row[6] : null;
               var entryDate = row[7] != "" ? new Date (row[7]) : null;
 
-
-              countAkumulasi++;
-              dataArrayAkumulasi.push([entryDate,countAkumulasi]);
+              dataArrayAkumulasi.push(dateWithoutTime(entryDate));
 
 
 
@@ -424,11 +429,6 @@
             //  for lagi untuk menghitung jumlah pendaftar
 
             console.log (dataArrayNotif);
-
-            // Sortir
-            dataArrayAkumulasi.sort (function(a,b){
-              return a[0] - b[0];
-            });
             console.log (dataArrayAkumulasi);
           } else {
             appendPre('No data found.');
